@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/cohete"
+            android:padding="48dp"
+            app:layout_constraintDimensionRatio="5:2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido de nuevo"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textColor="#d50000"
+        android:layout_marginVertical="16dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:prefixText="+51"
+        app:counterEnabled="true"
+        app:counterMaxLength="9"
+        app:endIconDrawable="@drawable/ic_carta"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusTopStart="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Celular"
+            android:maxLength="9"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:startIconDrawable="@drawable/ic_key"
+        app:passwordToggleEnabled="true"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusTopStart="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:paddingStart="48dp"
+            android:hint="Contraseña"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recuerdame"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp">
+        
+    </CheckBox>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnentrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceder"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        app:backgroundTint="#d50000"
+        app:cornerRadius="8dp"/>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textAlignment="center"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Aún no tienes una cuenta?"/>
+            
+        <TextView
+            android:id="@+id/tvRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrate aquí"
+            android:textStyle="bold"/>
+
+        
+    </LinearLayout>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceder con:"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp">
+        
+    </TextView>
+
+    
+    
+</LinearLayout>
