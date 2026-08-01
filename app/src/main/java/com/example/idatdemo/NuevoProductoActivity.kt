@@ -45,7 +45,7 @@ class NuevoProductoActivity : AppCompatActivity() {
             val image = etImage.text.toString()
             val db = Firebase.database.reference
             val productoMap = mapOf(
-                "nombre" to title,
+                "title" to title,
                 "price" to price,
                 "description" to description,
                 "category" to category,
@@ -53,9 +53,10 @@ class NuevoProductoActivity : AppCompatActivity() {
             )
             //Integrar el id auto incremental
             val id = UUID.randomUUID().toString()
-            db.child("productos").child(title).setValue(productoMap)
+            db.child("productos").child(id).setValue(productoMap)
                 //Agregar mensaje de exito
                 .addOnSuccessListener {
+                    Log.e("FIREBASE", "Producto insertado")
                     Toast.makeText(this, "Producto insertado", Toast.LENGTH_SHORT).show()
                     finish()
                 }

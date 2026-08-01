@@ -60,6 +60,7 @@ class HistorialActivity : AppCompatActivity() {
         historialAdapter = HistorialAdapter(this, productos)
         rvHistorial.adapter = historialAdapter
 
+        cargarProductosDesdeFirebase()
 //        cargarProductosDesdeApi()
 
 //        ivBuscar.setOnClickListener{
@@ -99,17 +100,16 @@ class HistorialActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     productos.clear()
                     for (item in snapshot.children) {
-                        val id = item.key
-                        val title = item.child("title")
-                        val description = item.child("description")
+                        val title = item.child("title").getValue(String::class.java)
+                        val description = item.child("description").getValue(String::class.java)
                         val price = item.child("price")
-                        val category = item.child("category")
-                        val image = item.child("image")
+                        val category = item.child("category").getValue(String::class.java)
+                        val image = item.child("image").getValue(String::class.java)
                         productos.add(Producto(
                             id = 0,
                             title = title.toString(),
-                            description = title.toString(),
-                            price = price.value.toString().toDouble() ?: 0.0,
+                            description = description.toString(),
+                            price = price.value.toString().toDouble(),
                             category = category.toString(),
                             image = image.toString(),
                             rating = Rating(
