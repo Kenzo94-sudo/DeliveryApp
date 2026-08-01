@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.idatdemo.adapters.HistorialAdapter
-import com.example.idatdemo.data.apí.FakeStoreApiClient
+//import com.example.idatdemo.data.apí.FakeStoreApiClient
 import com.example.idatdemo.entity.Producto
 import com.example.idatdemo.entity.Rating
 import retrofit2.Call
@@ -24,8 +24,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class detalleProducto : AppCompatActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -51,6 +49,4 @@ class detalleProducto : AppCompatActivity() {
             insets
         }
     }
-
-
 }

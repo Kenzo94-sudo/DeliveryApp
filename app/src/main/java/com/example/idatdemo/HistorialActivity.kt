@@ -13,8 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idatdemo.adapters.HistorialAdapter
 import com.example.idatdemo.data.apí.FakeStoreApiClient
+//import com.example.idatdemo.data.apí.FakeStoreApiClient
 import com.example.idatdemo.entity.Producto
+import com.example.idatdemo.entity.Rating
 import com.example.idatdemo.repository.ProductoRepository
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,12 +55,12 @@ class HistorialActivity : AppCompatActivity() {
 //            Producto(3, "Producto 3", 30.0, "Descripción del producto 3", "Categoría C", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXCI3SefznBLZfQ7m7CmqnBY42utUwgGYycYHz2owxko3DmQz53XkgaHvmpvwHEg-fOGlv&s=10")
 //        )
 
-        val productoRepository = ProductoRepository(this)
-//        productos.addAll(productoRepository.listarProductos())
+//        val productoRepository = ProductoRepository(this)
+////        productos.addAll(productoRepository.listarProductos())
         historialAdapter = HistorialAdapter(this, productos)
         rvHistorial.adapter = historialAdapter
 
-        cargarProductosDesdeApi()
+//        cargarProductosDesdeApi()
 
 //        ivBuscar.setOnClickListener{
 //            productos.clear()
@@ -83,5 +89,42 @@ class HistorialActivity : AppCompatActivity() {
                 Toast.makeText(this@HistorialActivity, t.message.toString(), Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun cargarProductosDesdeFirebase() {
+        val referencia = FirebaseDatabase.getInstance().getReference("productos")
+        Log.i("FIREBASE", "REFERENCIA:" + referencia)
+        referencia.addListenerForSingleValueEvent(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    productos.clear()
+                    for (item in snapshot.children) {
+                        val id = item.key
+                        val title = item.child("title")
+                        val description = item.child("description")
+                        val price = item.child("price")
+                        val category = item.child("category")
+                        val image = item.child("image")
+                        productos.add(Producto(
+                            id = 0,
+                            title = title.toString(),
+                            description = title.toString(),
+                            price = price.value.toString().toDouble() ?: 0.0,
+                            category = category.toString(),
+                            image = image.toString(),
+                            rating = Rating(
+                                rate = 0.0,
+                                count = 0
+                            )
+
+                        ))
+                    }
+                    historialAdapter.notifyDataSetChanged()
+                }
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            }
+        )
     }
 }

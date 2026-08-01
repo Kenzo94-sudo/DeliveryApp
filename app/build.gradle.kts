@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -37,7 +38,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.firebase:firebase-common-ktx:21.0.0")
     implementation("com.github.bumptech.glide:glide:5.0.5")
     implementation("com.airbnb.android:lottie:6.7.1")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -48,6 +49,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
